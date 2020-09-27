@@ -31,11 +31,10 @@ public struct Logger {
   ///   - subsystem: Subsystem Description
   ///   - category: Category Description
   public init(subsystem: String, category: String) {
-    let subsystemStr = "com.meijer.mobile.\(subsystem)"
     if #available(iOS 14.0, *) {
-      logger = os.Logger(subsystem: subsystemStr, category: category)
+      logger = os.Logger(subsystem: subsystem, category: category)
     } else {
-      logger = OSLog(subsystem: subsystemStr, category: category)
+      logger = OSLog(subsystem: subsystem, category: category)
     }
   }
   
