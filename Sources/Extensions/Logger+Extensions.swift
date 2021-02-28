@@ -17,35 +17,35 @@ extension os.Logger: Loggable {
     _ message: @autoclosure () -> Message,
     metadata: @autoclosure () -> Metadata?
   ) {
-    self.logInternal(.debug, message(), metadata())
+    logInternal(.debug, message(), metadata())
   }
   
   func infoLog(
     _ message: @autoclosure () -> Message,
     metadata: @autoclosure () -> Metadata?
   ) {
-    self.logInternal(.info, message(), metadata())
+    logInternal(.info, message(), metadata())
   }
   
   func defaultLog(
     _ message: @autoclosure () -> Message,
     metadata: @autoclosure () -> Metadata?
   ) {
-    self.logInternal(.default, message(), metadata())
+    logInternal(.default, message(), metadata())
   }
   
   func errorLog(
     _ message: @autoclosure () -> Message,
     metadata: @autoclosure () -> Metadata?
   ) {
-    self.logInternal(.error, message(), metadata())
+    logInternal(.error, message(), metadata())
   }
   
   func criticalLog(
     _ message: @autoclosure () -> Message,
     metadata: @autoclosure () -> Metadata?
   ) {
-    self.logInternal(.fault, message(), metadata())
+    logInternal(.fault, message(), metadata())
   }
   
   func logInternal(

@@ -1,8 +1,16 @@
 # LogMigrator
-> Note: Work in progress
 
-### Summary
+## Summary
 Lightweight Logging wrapper to enable early adoption, as well as a seamless migration to Apple's new [Swift Unified Logging APIs](https://developer.apple.com/documentation/os/logger). 
+
+## Installation
+
+### Swift Package Manager
+```swift
+
+```
+
+
 
 ### Resources
 - [Logging](https://developer.apple.com/documentation/os/logging)

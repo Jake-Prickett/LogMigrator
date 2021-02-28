@@ -5,19 +5,23 @@ import PackageDescription
 
 let package = Package(
     name: "LogMigrator",
-    platforms: [.iOS("12.0")],
+    platforms: [
+        .iOS("12.0")
+    ],
     products: [
         .library(name: "LogMigrator", targets: ["LogMigrator"]),
     ],
-    dependencies: [ ],
+    dependencies: [],
     targets: [
         .target(
             name: "LogMigrator",
             dependencies: [],
-            path: "Sources/"),
+            path: "Sources/"
+        ),
         .testTarget(
             name: "LogMigratorTests",
             dependencies: ["LogMigrator"],
-            path: "Tests/"),
+            path: "Tests/"
+        ),
     ]
 )

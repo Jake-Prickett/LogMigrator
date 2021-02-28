@@ -9,8 +9,6 @@
 import Foundation
 import os.log
 
-// Add Loggable conformance to the existing OSLog Logger
-
 extension OSLog: Loggable {
   func debugLog(
     _ message:  @autoclosure () -> Message,
@@ -52,9 +50,14 @@ extension OSLog: Loggable {
     os_log(.fault, log: self, "%{public}@", "\(formattedMetadata) \(message())")
   }
   
-  func prettify(_ metadata: Metadata) -> String? {
-    return !metadata.isEmpty
-      ? metadata.lazy.sorted(by: { $0.key < $1.key }).map { "\($0)=\($1)" }.joined(separator: " ")
-      : nil
+  private func prettify(_ metadata: Metadata) -> String? {
+    if !metadata.isEmpty {
+      return metadata.lazy
+        .sorted { $0.key < $1.key }
+        .map { "\($0)=\($1)" }
+        .joined(separator: " ")
+    } else {
+      return nil
+    }
   }
 }

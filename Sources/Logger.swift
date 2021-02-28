@@ -50,13 +50,17 @@ public struct Logger {
   
   // MARK: Logging Methods
   
-  // TODO: Describe logging methods and how they are stored, which levels are persisted, which levels to use when (examples), etc.
-  
   /// Logs a message to help debug problems during the development of your code.
   /// - Parameters:
   ///   - message: Message to log
   ///   - metadata: Data to provide some insight to the context at the time of the log
   ///
+  /// ## Log Level Information
+  /// **Persisted to disk:** No
+  ///
+  /// **Notes:** Captures verbose information during development that is useful only for debugging your code.
+  ///
+  /// ### Usage
   /// ```
   /// logger.debug("debug log message", metadata: ["example": "metadata"])
   /// ```
@@ -72,6 +76,12 @@ public struct Logger {
   ///   - message: Message to log
   ///   - metadata: Data to provide some insight to the context at the time of the log
   ///
+  /// ## Log Level Information
+  /// **Persisted to disk:** Only when collected with the log tool.
+  ///
+  /// **Notes:** Captures information that is helpful, but not essential, to troubleshoot problems.
+  ///
+  /// ### Usage
   /// ```
   /// logger.info("info log message", metadata: ["example": "metadata"])
   /// ```
@@ -79,7 +89,7 @@ public struct Logger {
     _ message: @autoclosure () -> Message,
     metadata: @autoclosure () -> Metadata? = nil
   ) {
-      logger.infoLog(message(), metadata: metadata() + self.metadata)
+    logger.infoLog(message(), metadata: metadata() + self.metadata)
   }
   
   /// Logs a message that is essential to troubleshoot problems later.
@@ -87,6 +97,12 @@ public struct Logger {
   ///   - message: Message to log
   ///   - metadata: Data to provide some insight to the context at the time of the log
   ///
+  /// ## Log Level Information
+  /// **Persisted to disk:** Yes, up to a storage limit.
+  ///
+  /// **Notes:** Captures information that is essential for troubleshooting problems. For example, capture information that might result in a failure.
+  ///
+  /// ### Usage
   /// ```
   /// logger.log("default log message", metadata: ["example": "metadata"])
   /// ```
@@ -94,7 +110,7 @@ public struct Logger {
     _ message: @autoclosure () -> Message,
     metadata: @autoclosure () -> Metadata? = nil
   ) {
-      logger.defaultLog(message(), metadata: metadata() + self.metadata)
+    logger.defaultLog(message(), metadata: metadata() + self.metadata)
   }
   
   /// Logs an error that occurred during the execution of your code.
@@ -102,6 +118,12 @@ public struct Logger {
   ///   - message: Message to log
   ///   - metadata: Data to provide some insight to the context at the time of the log
   ///
+  /// ## Log Level Information
+  /// **Persisted to disk:** Yes, up to a storage limit.
+  ///
+  /// **Notes:** Captures errors seen during the execution of your code. If an activity object exists, the system captures information for the related process chain.
+  ///
+  /// ### Usage
   /// ```
   /// logger.error("error log message", metadata: ["example": "metadata"])
   /// ```
@@ -109,7 +131,7 @@ public struct Logger {
     _ message: @autoclosure () -> Message,
     metadata: @autoclosure () -> Metadata? = nil
   ) {
-      logger.errorLog(message(), metadata: metadata() + self.metadata)
+    logger.errorLog(message(), metadata: metadata() + self.metadata)
   }
   
   /// Logs a critical error that occurred during the execution of your code.
@@ -117,6 +139,12 @@ public struct Logger {
   ///   - message: Message to log
   ///   - metadata: Data to provide some insight to the context at the time of the log
   ///
+  /// ## Log Level Information
+  /// **Persisted to disk:** Yes, up to a storage limit.
+  ///
+  /// **Notes:** Captures information about faults and bugs in your code. If an activity object exists, the system captures information for the related process chain.
+  ///
+  /// ### Usage
   /// ```
   /// logger.critical("critical log message", metadata: ["example": "metadata"])
   /// ```
@@ -124,6 +152,6 @@ public struct Logger {
     _ message: @autoclosure () -> Message,
     metadata: @autoclosure () -> Metadata? = nil
   ) {
-      logger.criticalLog(message(), metadata: metadata() + self.metadata)
+    logger.criticalLog(message(), metadata: metadata() + self.metadata)
   }
 }
